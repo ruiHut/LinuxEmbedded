@@ -10,6 +10,9 @@
         1. wait(), waitpid() 不仅可以获取子进程信息，还可以回收子进程资源。
             问题 wait（）为阻塞，子进程终止为随机 waitpit 不得已用轮询。
         2. 异步处理 SIGCHLD 信号机制
+            调用 signal() 设置信号处理函数
+        3. 忽视子进程状态， 不会产生僵尸进程
+            signal(SIGCHLD, SIG_IGN);
  */
 
 #include <stdlib.h>
