@@ -22,7 +22,11 @@ int main()
     else
     {
         do
-        {
+        {   
+            // wati() 用于父进程阻塞，直到一个子进程结束或者该进程收到一个指定的信号为止。
+            // 如果该父进程没有子进程或者子进程结束，则 wait（）立即返回
+            //  waitpit（） 作用和 wait（）一样，但是可以提供一个非阻塞 wait（）功能。
+            // liunx 内部实现 wait（） 实际上是调用 waitpid（）
             pr = waitpid(pc, NULL, WNOHANG);
 
             if (pr == 0)
@@ -40,8 +44,5 @@ int main()
         {
             printf("Some error occured \n");
         }
-        
-        
     }
-    
 }
